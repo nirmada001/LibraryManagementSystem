@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<LibraryManagementSystem.Models.Book>
+
+<h1>Library Books</h1>
+
+<a href="/Books/Create">Add New Book</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Availability</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.Genre</td>
+                <td>@(book.IsAvailable ? "Available" : "Borrowed")</td>
+            </tr>
+        }
+    </tbody>
+</table>
