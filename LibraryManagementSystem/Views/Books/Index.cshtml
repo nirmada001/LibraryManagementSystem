@@ -5,17 +5,16 @@
 }
 @model IEnumerable<LibraryManagementSystem.Models.Book>
 
-<h1>Library Books</h1>
+<h2>Books</h2>
 
-<a href="/Books/Create">Add New Book</a>
-
-<table>
+<table class="table">
     <thead>
         <tr>
             <th>Title</th>
             <th>Author</th>
             <th>Genre</th>
-            <th>Availability</th>
+            <th>Available</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -25,8 +24,14 @@
                 <td>@book.Title</td>
                 <td>@book.Author</td>
                 <td>@book.Genre</td>
-                <td>@(book.IsAvailable ? "Available" : "Borrowed")</td>
+                <td>@(book.IsAvailable ? "Yes" : "No")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@book.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@book.Id" class="btn btn-danger">Delete</a>
+                </td>
             </tr>
         }
     </tbody>
 </table>
+
+<a asp-action="Create" class="btn btn-primary">Add New Book</a>
